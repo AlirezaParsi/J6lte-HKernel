@@ -5,11 +5,9 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Prepare the build environment
@@ -61,7 +59,7 @@ jobs:
       - name: Check the output directory before uploading
       run: |
         ls -al ${{ steps.kernel.outputs.kernel-folder }}/out/arch/arm64/boot/
-    - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
       if: ${{ success() }}
       with:
         name: j6.zip
