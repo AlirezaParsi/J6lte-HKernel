@@ -7,7 +7,10 @@ on:
     branches: [ "master" ]
 jobs:
   build:
+    if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v3
     - name: Prepare the build environment
