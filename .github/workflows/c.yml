@@ -49,7 +49,6 @@ jobs:
     - name: Clone kernel source
       run: |
         git clone --depth=1 -b simple_q_enforcing
-        cd simple_q_enforcing
         cd J6lte-HKernel
         [ -f ".gitmodules" ] && sed -i 's,git@github.com:,https://github.com/,g' .gitmodules
         git submodule update --init
