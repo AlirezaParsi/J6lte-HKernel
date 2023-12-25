@@ -48,8 +48,9 @@ jobs:
 
     - name: Clone kernel source
       run: |
-        git clone --depth=1 -j $(nproc) ${{ github.event.inputs.simple_q_enforcing }} -b ${{ github.event.inputs.KERNEL_TREE_BRANCH }} simple_q_enforcing
-        cd kernel_tree
+        git clone --depth=1 -b simple_q_enforcing
+        cd simple_q_enforcing
+        cd J6lte-HKernel
         [ -f ".gitmodules" ] && sed -i 's,git@github.com:,https://github.com/,g' .gitmodules
         git submodule update --init
         echo "kernel-folder=$(pwd)" >> $GITHUB_OUTPUT
