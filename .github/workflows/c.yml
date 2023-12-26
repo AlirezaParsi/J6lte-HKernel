@@ -49,7 +49,7 @@ jobs:
     - name: Clone kernel source
       run: |
         git clone --depth=1 http://github.com/EmanuelCN/kernel_xiaomi_sm8250
-        cd J6lte-HKernel
+        cd kernel_xiaomi_sm8250
         [ -f ".gitmodules" ] && sed -i 's,git@github.com:,https://github.com/,g' .gitmodules
         git submodule update --init
         echo "kernel-folder=$(pwd)" >> $GITHUB_OUTPUT
