@@ -48,7 +48,7 @@ jobs:
 
     - name: Clone kernel source
       run: |
-        git clone --depth=1 https://github.com/AlirezaParsi/J6lte-HKernel
+        git clone --depth=1 http://github.com/EmanuelCN/kernel_xiaomi_sm8250
         cd J6lte-HKernel
         [ -f ".gitmodules" ] && sed -i 's,git@github.com:,https://github.com/,g' .gitmodules
         git submodule update --init
@@ -82,8 +82,8 @@ jobs:
         export CLANG_TRIPLE=aarch64-linux-gnu-
         export CROSS_COMPILE=aarch64-linux-android-
         export CROSS_COMPILE_ARM32=arm-linux-androideabi-
-        make exynos7870-a6lte_defconfig
-        make -j
+        make O=out vendor/alioth_defconfig
+        make -j O=out CC="clang"
        
         echo "elapsed_time=$(echo "$(date +%s)"-"${{ steps.workspace.outputs.start_time }}" | bc)" >> $GITHUB_OUTPUT
       working-directory: ${{ steps.kernel.outputs.kernel-folder }}
