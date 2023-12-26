@@ -84,7 +84,7 @@ jobs:
         export CROSS_COMPILE_ARM32=arm-linux-androideabi-
         export CROSS_COMPILE_COMPAT=arm-linux-gnueabi- LLVM=1 LLVM_IAS=1
         make O=out vendor/alioth_defconfig
-        make -j O=out CC="ccache clang"
+        make -j O=out CC="clang"
        
         echo "elapsed_time=$(echo "$(date +%s)"-"${{ steps.workspace.outputs.start_time }}" | bc)" >> $GITHUB_OUTPUT
       working-directory: ${{ steps.kernel.outputs.kernel-folder }}
